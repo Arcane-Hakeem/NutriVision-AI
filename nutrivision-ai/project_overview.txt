@@ -1,42 +1,51 @@
 ==================================================
-NUTRIVISION AI - PROJECT OVERVIEW
+NUTRIVISION AI - PROJECT OVERVIEW (FRONTEND)
 ==================================================
 
 1. WHAT IS THIS PROJECT?
-NutriVision AI is a smart nutrition assistant. It allows users to upload photos of their meals and (once the backend is connected) will use Computer Vision to identify the food and estimate its nutritional value (calories, protein, carbs, fats). It also features a dashboard to track daily health goals and analytics to view weekly macronutrient trends.
+NutriVision AI is a smart nutrition assistant. Users upload photos of their meals, 
+and the application identifies the food and estimates its nutritional value.
 
 2. WHAT HAS BEEN BUILT SO FAR (FRONTEND)
-The entire frontend user interface is complete and fully responsive. It includes:
-- **Dashboard**: A home screen with daily calorie/macro stats and a weekly area chart.
-- **AI Food Scanner**: A drag-and-drop/upload interface that previews the image and is ready to send it to the Python backend via Axios.
-- **Nutrition Analytics**: A bar chart displaying weekly trends for Protein, Carbs, and Fats using Recharts.
-- **Meal History**: An empty state page ready to display saved meals.
-- **Food Library**: A placeholder page for the food database.
-- **Settings**: App preferences UI.
-- **Layout**: Fully responsive sidebar navigation and header (mobile-friendly).
+The entire frontend UI is complete and fully responsive. It includes:
+- Dashboard: Daily calorie/macro stats and a weekly area chart.
+- AI Food Scanner: Upload interface that previews the image and is ready to send it to the backend.
+- Nutrition Analytics: A bar chart displaying weekly trends for Protein, Carbs, and Fats.
+- Meal History, Food Library, Settings: Styled UI pages.
+- Layout: Fully responsive sidebar navigation and header.
 
 3. TECHNOLOGY STACK USED
-- **Framework**: React 19 (via Vite)
-- **Styling**: Tailwind CSS v4 (Custom Forest-Green theme)
-- **Routing**: React Router DOM
-- **Charts**: Recharts
-- **Icons**: Lucide React
-- **API Requests**: Axios
+- Framework: React (via Vite)
+- Styling: Tailwind CSS v4 (Custom Forest-Green theme)
+- Routing: React Router DOM
+- Charts: Recharts
+- Icons: Lucide React
+- API Requests: Axios
 
 4. HOW TO RUN THE FRONTEND LOCALLY
 Prerequisites: Node.js must be installed.
-
 Step 1: Open terminal in this folder.
 Step 2: Install dependencies (only needed the first time):
         npm install
 Step 3: Start the development server:
         npm run dev
-Step 4: Open the URL shown in the terminal (usually http://localhost:5173) in your browser.
+Step 4: Open the URL shown in the terminal (usually http://localhost:5173).
 
 5. NEXT STEPS (BACKEND INTEGRATION)
 The frontend is currently using "Demo Data" for the charts and dashboard. 
-To make the AI Food Scanner work:
-- The Python backend (FastAPI + OpenCV) must be running on http://127.0.0.1:8000
-- It must accept a POST request at /analyze with a file upload.
-- It must return a JSON response with: food_name, confidence, calories, protein_g, carbs_g, and fat_g.
-- CORS must be enabled on the backend to allow requests from localhost:5173.
+To make the AI Food Scanner work, the backend developer needs to:
+
+- Run the backend (Python FastAPI + OpenCV) on: http://127.0.0.1:8000
+- Enable CORS to allow requests from: http://localhost:5173
+- Create an endpoint: POST /analyze
+- Accept a multipart/form-data file upload with the key "file".
+- Return a JSON response EXACTLY matching this structure:
+
+{
+  "food_name": "Apple",
+  "confidence": 0.95,
+  "calories": 52,
+  "protein_g": 0.3,
+  "carbs_g": 14,
+  "fat_g": 0.2
+}
