@@ -20,7 +20,7 @@ export default function Analytics() {
 
       <section className="rounded-2xl border border-[#e8ece5] bg-white p-5 sm:p-7">
         <h3 className="font-bold">Daily macronutrients</h3>
-        <p className="mt-1 text-sm text-gray-500">Example values in grams · replace with recorded meals</p>
+        <p className="mt-1 text-sm text-gray-500">Example values in grams ï¿½ replace with recorded meals</p>
         <div className="mt-6 h-80">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} barGap={4}>
